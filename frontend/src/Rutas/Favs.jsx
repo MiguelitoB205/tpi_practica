@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
 
-const Home = () => {
+const Favs = () => {
   return (
     <div>
       <Header/>
@@ -11,4 +11,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Favs
