@@ -1,6 +1,5 @@
 package com.example.practica_uno.controller;
 
-import com.example.practica_uno.entity.Categoria;
 import com.example.practica_uno.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

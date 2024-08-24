@@ -1,7 +1,5 @@
 package com.example.practica_uno.service;
 
-import com.example.practica_uno.entity.Categoria;
-import com.example.practica_uno.entity.Libro;
 import com.example.practica_uno.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

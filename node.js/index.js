@@ -5,11 +5,8 @@ const cors = require("cors");
 app.use(express.json());
 const port = 3000;
 
-const categorias = [{
-    id: 1,
-    nombre: 'Religión',
-    libros:[
-        {
+const libros = [{
+    
             id:1,
             nombre: "Sagrada Biblia",
             urlImagen: "https://panamericana.vtexassets.com/arquivos/ids/359290/biblia-latinoamericana-edic-pastoral-9788428510455.jpg?v=637336459177330000",
@@ -21,57 +18,51 @@ const categorias = [{
         {
             id: 2,
             nombre: "El Corán",
-            urlImagen:"",
+            urlImagen:"https://www.plutonediciones.com/site/wp-content/uploads/2020/09/Cubierta-El-Coran.jpg",
             autor: "Mahoma",
             editorial: "Sociedades Colombianas Islámicas",
             year:610,
             descripcion: "Contiene leyes religiosas, sobre festividaes, como, por ejemplo, el ayuno de Ramadám, de inspiración divina, de parte del Dios Alláh, y escrito por el profeta Mahoma"
         }
-    ]
-},{
-    id:2,
-    nombre: "Filosofía",
-    libros:[
+    
+,
         {
-            id:1, 
+            id:3, 
             nombre: "Historia de la filosofía sin temor ni temblor",
-            urlImagen:"",
+            urlImagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNg9P4SNMUdRay2tGZJBYCAn2WxOIwPFv7AQ&s",
             autor: "Fernando Savater",
             editorial: "Panamericana",
             year: 2015,
             descripcion: "Es un libro que cuenta la trayectoria de los filosofos y sus tesis sobre la cosmología del mundo, comenzando por Sócrates, Platón y Aristóteles."
         },
         {
-            id: 2,
+            id: 4,
             nombre: "Capital de Marx",
-            urlImagen: "",
+            urlImagen: "https://images.cdn2.buscalibre.com/fit-in/360x360/aa/33/aa33b0b3bb46cea52656c1e5cc55ca11.jpg",
             autor: "Karl Marx",
             editorial: "Panamericana",
             year: 2014,
-            descripcion: ""
+            descripcion: "Karl es pionero del movimineto socialista, en que, en un territorio deben vivir con igualdad, que el rico no sea rico, ni que el pobre sea pobre, sino que vivan todos en la clase media"
         }
-    ]
-}]
+    
+]
 
 app.get('/', (req, res)=>{
     res.send('Node JS api');
 })
 
-app.get('/api/categorias', (req, res)=>{
-    res.send(categorias);
+app.get('/api/libros', (req, res)=>{
+    res.send(libros);
 });
 
-app.get('/api/categorias/:id', (req, res)=>{
-    const categoria = categorias.find(c=>c.id === parseInt(req.params.id));
-    if(!categoria) return res.status(404).send('Categoría no encontrada');
-    else res.send(categoria)
+app.get('/api/libros/:id', (req, res)=>{
+    const libro = libros.find(c=>c.id === parseInt(req.params.id));
+    if(!libro) return res.status(404).send('Libro no encontrado');
+    else res.send(libro)
 })
 
-app.post('/api/categorias', (req, res)=>{
-    const categoria = {
-        id: categorias.length + 1,
-        nombre: req.body.nombre,
-        libros: {
+app.post('/api/libros', (req, res)=>{
+    const  libros= {
             id:libros.length + 1,
             nombre: req.body.nombre,
             urlImagen: req.body.urlImagen,
@@ -80,18 +71,18 @@ app.post('/api/categorias', (req, res)=>{
             year:parseInt(req.body.year),
             descripcion:req.body.descripcion
         }
+        libros.push(libros)
+        res.send(libros)
     }
-    categorias.push(categoria);
-    res.send(categoria)
-});
+);
 
-app.delete('/api/categorias/:id', (req, res) =>{
-    const categoria = categorias.find(c => c.id === parseInt(req.params.id));
-    if(!categoria) return res.status(404).send("Categoría no encontrada");
+app.delete('/api/libro/:id', (req, res) =>{
+    const libro= libros.find(c => c.id === parseInt(req.params.id));
+    if(!libro) return res.status(404).send("Libro no encontrada");
 
-    const index = categorias.indexOf(categoria);
-    categorias.splice(index, 1);
-    res.send(categoria)
+    const index = libros.indexOf(libro);
+    libros.splice(index, 1);
+    res.send(libro)
 })
 
 app.listen(port, () => {
