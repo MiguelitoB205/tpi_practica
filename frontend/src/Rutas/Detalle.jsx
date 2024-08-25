@@ -9,10 +9,14 @@ const Detalle = () => {
   const {isDark} = useContext(ContextGlobal);
 
   const getLibro  = async () =>{
-    const res = await fetch(`http://localhost:3000/api/libros${id}`);
+    const res = await fetch(`http://localhost:3100/api/libros${id}`);
     const data = await res.json();
     setLibro(data);
 }  
+
+useEffect(() => {
+  getLibro();
+}, [])
 return (
     <div className={isDark ? "dark" : ""}>
       <h1>Detalle del libro {id}</h1>

@@ -12,13 +12,13 @@ const Navbar = () => {
         <Link to='/'>
           <button>Home</button>
         </Link>
-        <Link to="/detalle">
-          <button>Detalle</button>
+        <Link to="/favs">
+          <button>Favoritos</button>
         </Link>
-        <Link to='/favs'>
-        <button>Favoritos</button>
+        <Link to='/contacto'>
+        <button>Contacto</button>
         </Link>
-        <button onClick={() => dispatch({type: "toggle_them"})}>Change theme</button>
+        <button onClick={() => dispatch({type: "toggle_theme"})}>Change theme</button>
     </nav>
   )
 }

@@ -2,7 +2,7 @@ import React, { useContext} from 'react'
 import { Link } from "react-router-dom";
 import { ContextGlobal } from '../Context/global.context';
 
-const Cards = ({ id, nombre, urlImagen, autor, editorial, year, descripcion}) => {
+const Cards = ({ id, nombre, urlImagen, autor, editorial, year, descripcion, addFav}) => {
     const {
         state: { isDark }
     } = useContext(ContextGlobal);

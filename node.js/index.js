@@ -3,8 +3,9 @@ const app = express();
 const cors = require("cors");
 
 app.use(express.json());
-const port = 3000;
+const port = 3100;
 
+app.use(cors())
 const libros = [{
     
             id:1,
@@ -85,9 +86,21 @@ app.delete('/api/libro/:id', (req, res) =>{
     res.send(libro)
 })
 
-app.listen(port, () => {
-    console.log(`API escuchando en http://localhost:${port}`);
-  });
 
-app.use(cors())
 
+app.get('/api/libros/:id', cors(), function (req, res, next){
+    res.json({msg: 'This is CORS-enabled for a Single Route'})
+})
+
+const corsOptions = {
+    origin: "http://ejemplo.com",
+    optionsSuccessStatus:200
+}
+
+app.get('/api/libros/:id', cors(corsOptions), (req,res,next)=>{
+    res.json({msg: 'This is CORS-enabled for only ejemplo.com'})
+})
+
+app.listen(port, () =>{
+    console.log(`Escuhando al puerto http://localhost:${port}`);
+})

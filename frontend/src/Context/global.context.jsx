@@ -12,12 +12,12 @@ const saveFavsInStorage = (favs) => {
         localStorage.setItem("favs", JSON.stringify(favs));
 }
 
-const initialState = { isDark: false, gfavs: getFavsFromStorage()};
+const initialState = { isDark: false, favs: getFavsFromStorage()};
 
 const reducer = (state, action) => {
     switch (action.type) {
         case "add_fav":
-            const newState = { ...state, favs: [...state.gfavs, action.payload]};
+            const newState = { ...state, favs: [...state.favs, action.payload]};
             saveFavsInStorage(newState.favs);
             alert("Favorite Added");
             return newState;
@@ -43,7 +43,7 @@ const ContextProvider = ({children})=> {
     const [libros, setLibros] = useState([]);
 
     const getLibros = async () =>{
-        const res = await fetch("http://localhost:3000/api/libros");
+        const res = await fetch("http://localhost:3100/api/libros");
         const data = await res.json();
         setLibros(data);
     };
@@ -53,7 +53,7 @@ const ContextProvider = ({children})=> {
     }, []);
 
     return (
-        <ContextGlobal.Provider vale={{ libros, dispatch, state}}>
+        <ContextGlobal.Provider value={{ libros, dispatch, state}}>
             {children}
         </ContextGlobal.Provider>
     )

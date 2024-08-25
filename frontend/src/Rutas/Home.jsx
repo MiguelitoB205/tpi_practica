@@ -6,7 +6,7 @@ const Home = () => {
   const {
     libros,
     dispatch,
-    state: { isDark }
+    state: { isDark },
   } = useContext(ContextGlobal);
   return (
     
