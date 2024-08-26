@@ -9,7 +9,7 @@ const Navbar = () => {
   } = useContext(ContextGlobal)
   return (
     <nav className={isDark ? "dark": ""}>
-        <Link to='/'>
+        <Link to='/home'>
           <button>Home</button>
         </Link>
         <Link to="/favs">

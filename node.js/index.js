@@ -63,7 +63,7 @@ app.get('/api/libros/:id', (req, res)=>{
 })
 
 app.post('/api/libros', (req, res)=>{
-    const  libros= {
+    const  libro= {
             id:libros.length + 1,
             nombre: req.body.nombre,
             urlImagen: req.body.urlImagen,
@@ -72,8 +72,8 @@ app.post('/api/libros', (req, res)=>{
             year:parseInt(req.body.year),
             descripcion:req.body.descripcion
         }
-        libros.push(libros)
-        res.send(libros)
+        libros.push(libro)
+        res.send(libro)
     }
 );
 
@@ -88,18 +88,6 @@ app.delete('/api/libro/:id', (req, res) =>{
 
 
 
-app.get('/api/libros/:id', cors(), function (req, res, next){
-    res.json({msg: 'This is CORS-enabled for a Single Route'})
-})
-
-const corsOptions = {
-    origin: "http://ejemplo.com",
-    optionsSuccessStatus:200
-}
-
-app.get('/api/libros/:id', cors(corsOptions), (req,res,next)=>{
-    res.json({msg: 'This is CORS-enabled for only ejemplo.com'})
-})
 
 app.listen(port, () =>{
     console.log(`Escuhando al puerto http://localhost:${port}`);

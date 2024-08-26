@@ -12,12 +12,17 @@ const Home = () => {
     
     <main className={ isDark ? "dark" : ""}>
       <h1>Página principal</h1>
-    <div className='card_grid'>
+    <div className='card-grid'>
       {libros?.map((libro)=>(
-      <Cards key={libro.id}
+      <Cards 
+      key={libro.id}
       id={libro.id}
       nombre={libro.nombre}
       urlImagen={libro.urlImagen}
+      autor={libro.autor}
+      editorial={libro.editorial}
+      year={libro.year}
+      descripcion={libro.descripcion}
       addFav = {()=>dispatch({type: "add_fav", payload: libro})}
       />
     ))}
